@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/envelope.json",
+  "title": "VerbResponseEnvelope",
+  "description": "Standard wrapper for all verb execution results.",
+  "type": "object",
+  "properties": {
+    "ok": { "type": "boolean" },
+    "verb": { "type": "string" },
+    "result": {
+      "type": "object",
+      "description": "Shape-specific output. Structure depends on the verb's shape."
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "reason": { "type": "string", "description": "Machine-readable error code (e.g., no_managed_droplet, role_denied)." },
+        "message": { "type": "string", "description": "Human/LLM-readable explanation." },
+        "hint": { "type": "string", "description": "Actionable next step (e.g., GET /api/v1/agent/verbs/... for the input_schema)." }
+      },
+      "required": ["reason", "message"]
+    },
+    "audit_id": { "type": "integer", "description": "Present on write verbs. Pass to audit.revert to undo." },
+    "idempotency_key": { "type": "string" },
+    "rollback_handle": { "type": "string", "description": "Opaque token encoding the inverse action." }
+  },
+  "required": ["ok", "verb"]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/subscribe.json",
+  "title": "SubscribeOutput",
+  "description": "Output shape for subscribe verbs — cursor-polling observe stream.",
+  "type": "object",
+  "properties": {
+    "subscription_id": { "type": "string" },
+    "cursor": { "type": "string", "description": "Pass to poll to get events after this point." },
+    "initial_events": {
+      "type": "array",
+      "items": { "type": "object" },
+      "description": "Events matching the filter at subscription time."
+    },
+    "filters": {
+      "type": "object",
+      "description": "Active filters on this subscription."
+    }
+  },
+  "required": ["subscription_id", "cursor"],
+  "additionalProperties": true
+}

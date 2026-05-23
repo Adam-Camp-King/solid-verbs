@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/transaction.json",
+  "title": "TransactionOutput",
+  "description": "Output shape for transaction verbs — ACID grouping over multi-step writes.",
+  "type": "object",
+  "properties": {
+    "transaction_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["started", "appended", "committed", "aborted"] },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "verb": { "type": "string" },
+          "status": { "type": "string" },
+          "audit_id": { "type": "integer" }
+        },
+        "required": ["verb", "status"]
+      }
+    },
+    "rollback_handle": { "type": "string" }
+  },
+  "required": ["transaction_id", "status"],
+  "additionalProperties": true
+}

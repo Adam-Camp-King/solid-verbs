@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/suggest.json",
+  "title": "SuggestOutput",
+  "description": "Output shape for suggest verbs — ranked next-actions with confidence.",
+  "type": "object",
+  "properties": {
+    "suggestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "description": "Verb name or action description." },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "confidence_band": { "type": "string", "enum": ["high", "medium", "low", "learning"] },
+          "reason": { "type": "string" },
+          "model_version": { "type": "string" },
+          "sample_size": { "type": "integer", "minimum": 0 }
+        },
+        "required": ["action", "confidence", "confidence_band", "reason"]
+      }
+    }
+  },
+  "required": ["suggestions"],
+  "additionalProperties": true
+}

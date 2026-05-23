@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/preview.json",
+  "title": "PreviewOutput",
+  "description": "Output shape for preview verbs — dry-run a write, return projected impact.",
+  "type": "object",
+  "properties": {
+    "current": { "type": "object", "description": "State before the action." },
+    "projected": { "type": "object", "description": "State after the action (projected)." },
+    "delta": { "type": "object", "description": "Diff between current and projected." },
+    "reversible": { "type": "boolean", "description": "Whether the action can be undone." },
+    "notes": { "type": "string" }
+  },
+  "required": ["current", "projected", "reversible"],
+  "additionalProperties": true
+}

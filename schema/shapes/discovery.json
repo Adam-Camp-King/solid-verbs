@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/discovery.json",
+  "title": "DiscoveryOutput",
+  "description": "Output shape for discovery verbs — introspect the verb manifest.",
+  "type": "object",
+  "properties": {
+    "verbs": {
+      "type": "array",
+      "items": { "$ref": "../verb-record.json" },
+      "description": "List of VerbRecords matching the query."
+    },
+    "total": { "type": "integer" },
+    "surface": { "type": "string", "description": "Surface filter applied." }
+  },
+  "required": ["verbs", "total"],
+  "additionalProperties": true
+}

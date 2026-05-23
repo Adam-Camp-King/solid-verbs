@@ -1,0 +1,32 @@
+{
+  "verb": "customer.full_context",
+  "shape": "aggregate",
+  "input": {
+    "customer_id": 42,
+    "include_payment_methods": true
+  },
+  "output": {
+    "entity_id": 42,
+    "entity_type": "customer",
+    "data": {
+      "name": "Acme Plumbing",
+      "email": "contact@acmeplumbing.com",
+      "phone": "+18015551234",
+      "lifetime_value_cents": 245000,
+      "open_deals": 2,
+      "total_appointments": 14,
+      "last_interaction": "2026-05-20T14:30:00Z",
+      "tags": ["vip", "commercial"],
+      "payment_methods": [
+        { "type": "card", "last4": "4242", "brand": "visa", "is_default": true }
+      ]
+    },
+    "relations": [
+      { "type": "deal", "id": 7, "title": "Kitchen remodel", "stage": "proposal_sent", "amount_cents": 85000 },
+      { "type": "deal", "id": 12, "title": "Bathroom rough-in", "stage": "new", "amount_cents": 42000 },
+      { "type": "appointment", "id": 15, "date": "2026-05-25T09:00:00-06:00", "service": "Estimate" },
+      { "type": "invoice", "id": 201, "status": "paid", "amount_cents": 118000 }
+    ],
+    "fetched_at": "2026-05-23T14:00:00Z"
+  }
+}

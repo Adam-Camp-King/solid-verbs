@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/revert.json",
+  "title": "RevertOutput",
+  "description": "Output shape for revert verbs — single-action undo against an audit row.",
+  "type": "object",
+  "properties": {
+    "reverted": { "type": "boolean" },
+    "audit_id": { "type": "integer" },
+    "original_action": { "type": "string", "description": "What was done." },
+    "revert_action": { "type": "string", "description": "What the undo did." },
+    "reason": { "type": "string", "description": "If reverted=false, why it couldn't be undone." }
+  },
+  "required": ["reverted", "audit_id"],
+  "additionalProperties": true
+}

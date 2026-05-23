@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/receipt.json",
+  "title": "ReceiptOutput",
+  "description": "Output shape for receipt verbs — attestation on a side-effecting write.",
+  "type": "object",
+  "properties": {
+    "status": { "type": "string", "description": "Outcome (completed, pending, failed)." },
+    "audit_id": { "type": "integer", "description": "Pass to revert to undo this action." },
+    "rollback_handle": { "type": "string", "description": "Opaque token encoding the inverse action." },
+    "idempotency_key": { "type": "string", "description": "Replay-safe — same key is a no-op." },
+    "timestamp": { "type": "string", "format": "date-time" }
+  },
+  "required": ["status", "audit_id"],
+  "additionalProperties": true
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/verb-record.json",
+  "title": "VerbRecord",
+  "description": "Canonical description of one agent-attraction verb.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_.]*$",
+      "description": "Dot-notation (payments.preview_refund_impact) or snake_case (charge_invoice)."
+    },
+    "description": {
+      "type": "string",
+      "description": "What the verb does — written for an LLM, not a human."
+    },
+    "shape": {
+      "type": "string",
+      "enum": [
+        "aggregate", "explain", "preview", "suggest",
+        "transaction", "receipt", "revert", "subscribe",
+        "discovery", "trail", "reputation", "macro", "telemetry"
+      ]
+    },
+    "side_effects": {
+      "type": "string",
+      "enum": ["read", "write", "mixed"],
+      "default": "read"
+    },
+    "input_schema": {
+      "type": "object",
+      "description": "JSON Schema for verb parameters. company_id is injected by the runtime, never declared here."
+    },
+    "output_schema": {
+      "type": "object",
+      "description": "Optional JSON Schema for the response."
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["http", "mcp_stdio", "webmcp", "ucp", "cli"]
+      },
+      "default": ["http", "mcp_stdio", "webmcp", "ucp", "cli"]
+    },
+    "requires_consent": {
+      "type": "boolean",
+      "default": false
+    },
+    "tier_floor": {
+      "type": "string",
+      "default": "starter"
+    }
+  },
+  "required": ["name", "description", "shape", "input_schema"],
+  "additionalProperties": false
+}

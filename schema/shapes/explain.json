@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/explain.json",
+  "title": "ExplainOutput",
+  "description": "Output shape for explain verbs — causal chain that produced a state.",
+  "type": "object",
+  "properties": {
+    "entity_id": { "type": ["integer", "string"] },
+    "entity_type": { "type": "string" },
+    "current_state": { "type": "object", "description": "The state being explained." },
+    "causal_chain": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "action": { "type": "string" },
+          "actor": { "type": "string" },
+          "detail": { "type": "string" }
+        },
+        "required": ["action"]
+      },
+      "description": "Ordered list of events that led to the current state."
+    },
+    "reasoning": { "type": "string", "description": "Plain-language explanation." }
+  },
+  "required": ["entity_id", "causal_chain"],
+  "additionalProperties": true
+}

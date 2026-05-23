@@ -1,0 +1,28 @@
+{
+  "verb": "infrastructure_diagnose",
+  "shape": "aggregate",
+  "input": {},
+  "output": {
+    "droplet_id": 1,
+    "size": "SMALL",
+    "size_slug": "s-2vcpu-4gb",
+    "region": "nyc1",
+    "ip": "10.0.0.42",
+    "overall": "healthy",
+    "health": {
+      "backend": true,
+      "frontend": true,
+      "database": true,
+      "redis": true,
+      "mcp": true,
+      "overall": "healthy"
+    },
+    "resources": {
+      "cpu_pct": 12.5,
+      "memory_pct": 45.2,
+      "disk_pct": 61.0
+    },
+    "queue_depth": 3,
+    "recommendation": "Healthy. No action recommended."
+  }
+}

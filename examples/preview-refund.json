@@ -1,0 +1,31 @@
+{
+  "verb": "payments.preview_refund_impact",
+  "shape": "preview",
+  "input": {
+    "transaction_id": 100,
+    "refund_amount_cents": 5000
+  },
+  "output": {
+    "current": {
+      "transaction_id": 100,
+      "amount_cents": 11800,
+      "refunded_cents": 0,
+      "net_cents": 11800,
+      "status": "captured"
+    },
+    "projected": {
+      "transaction_id": 100,
+      "amount_cents": 11800,
+      "refunded_cents": 5000,
+      "net_cents": 6800,
+      "status": "partially_refunded"
+    },
+    "delta": {
+      "refunded_cents": 5000,
+      "net_change_cents": -5000,
+      "processing_fee_refunded_cents": 145
+    },
+    "reversible": false,
+    "notes": "Partial refund. Refunds are not reversible once issued. Processing fee of $1.45 will be returned to the merchant."
+  }
+}

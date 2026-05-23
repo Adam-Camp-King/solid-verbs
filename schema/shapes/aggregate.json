@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidnumber.com/solid-verbs/v1/shapes/aggregate.json",
+  "title": "AggregateOutput",
+  "description": "Output shape for aggregate verbs — collapsed multi-query read.",
+  "type": "object",
+  "properties": {
+    "entity_id": { "type": ["integer", "string"] },
+    "entity_type": { "type": "string" },
+    "data": { "type": "object", "description": "Merged entity payload." },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "id": { "type": ["integer", "string"] }
+        },
+        "required": ["type", "id"]
+      }
+    },
+    "fetched_at": { "type": "string", "format": "date-time" }
+  },
+  "required": ["entity_id", "data"],
+  "additionalProperties": true
+}
