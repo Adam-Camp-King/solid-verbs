@@ -1,0 +1,32 @@
+{
+  "name": "@solidnumber/solid-verbs",
+  "version": "0.1.0",
+  "description": "The verb taxonomy for AI agents acting on real businesses — 12 shapes, manifest format, receipt contract, consent gates.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "schema/",
+    "spec/",
+    "examples/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test dist/__tests__/*.test.js",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "ai", "agents", "verbs", "mcp", "model-context-protocol",
+    "solid", "solidnumber", "taxonomy", "receipts", "consent"
+  ],
+  "author": "Adam Campbell <adam@solidnumber.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Adam-Camp-King/solid-verbs.git"
+  },
+  "homepage": "https://solidnumber.com/docs/verbs",
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
